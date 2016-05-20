@@ -1,0 +1,181 @@
+<% content_for :features, "template-page" %>
+<% content_for :class, "template-page" %>
+<% content_for :head do %>
+<%= stylesheet_link_tag 'light_bootstrap_dashboard/demo', media: 'all', 'data-turbolinks-track' => true %>
+<%#= javascript_include_tag 'light_bootstrap_dashboard/demo', 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image='<%= image_path('light_bootstrap_dashboard/sidebar-5.jpg') %>'>
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Creative Tim
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <%= link_to('  Dashboard', {:controller => 'welcome', :action => 'dashboard'}, class: 'pe-7s-graph simple-text') %>
+                </li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               Account
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+          <div class="container-fluid">
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="card">
+                   <div class="content">
+                     <div class="ct-chart" id="chart0"></div>
+                     <% seriesOut0 = [[12, 9, 7, 10, 5],[10, 1, 3.5, 17, 3],[1, 3, 14, 5, 6]] %>
+                     <%= seriesOut0 %>
+                     <script type="text/javascript">
+                       var seriesOutA0 = "<%= seriesOut0 %>";
+                       var seriesOut0 = {
+                         labels: ['Montag', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                         series: <%= seriesOut0 %>
+                       }
+                       lineChart0(seriesOut0)
+                     </script>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="card">
+                   <div class="content">
+                     <div class="ct-chart" id="chart1"></div>
+                     <% seriesOut1 = [[120, 900, 700, 120, 500],[100, 100, 350, 700, 300],[100, 300, 400, 500, 600]] %>
+                     <%= seriesOut1 %>
+                     <script type="text/javascript">
+                       var seriesOutA1 = "<%= seriesOut1 %>";
+                       var seriesOut1 = {
+                         labels: ['One', 'Two', 'Three', 'Four','Five'],
+                         series: <%= seriesOut1 %>
+                       }
+                       lineChart1(seriesOut1)
+                     </script>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="card">
+                   <div class="content">
+                     <%= link_to '#', class: "has-modal", 'data-toggle' => 'modal', 'data-target' => '#myModal' do %>
+                       Chart
+                      <% end %>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="myModalLabel">Chart</h4>
+                            </div>
+                            <div class="modal-body">
+                               <div class="ct-chart" id="chart2"></div>
+                               <% seriesOut2 = [[12, 9, 7, 12, 5],[10, 1, 3.5, 7, 3],[1, 3, 4, 5, 6]] %>
+                               <%= seriesOut2 %>
+                               <script type="text/javascript">
+                                 var seriesOutA2 = "<%= seriesOut2 %>";
+                                 var seriesOut2 = {
+                                   labels: [1, 6, 3, 4, 1],
+                                   series: <%= seriesOut2 %>
+                                 }
+                                 lineChart2(seriesOut2)
+                               </script> 
+                            </div>
+                            <div class="modal-footer">
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+
+                     <div class="ct-chart" id="chart2"></div>
+                     <% seriesOut2 = [[12, 9, 7, 12, 5],[10, 1, 3.5, 7, 3],[1, 3, 4, 5, 6]] %>
+                     <%= seriesOut2 %>
+                     <script type="text/javascript">
+                       var seriesOutA2 = "<%= seriesOut2 %>";
+                       var seriesOut2 = {
+                         labels: [1, 6, 3, 4, 1],
+                         series: <%= seriesOut2 %>
+                       }
+                       lineChart2(seriesOut2)
+                     </script>
+                   </div>
+                 </div>
+               </div>
+             </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
